@@ -3,12 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
     color: #fff;
     background-color: #0a192f;
     line-height: 1.6;
 }
+
 a {
     text-decoration: none;
     color: inherit;
@@ -24,15 +26,18 @@ nav {
     top: 0;
     z-index: 100;
 }
+
 nav h1 {
     color: #00ffcc;
     font-size: 1.5rem;
 }
+
 nav ul {
     list-style: none;
     display: flex;
     gap: 1.5rem;
 }
+
 nav ul li a:hover {
     color: #00ffcc;
     transition: 0.3s;
@@ -43,6 +48,7 @@ nav ul li a:hover {
     max-width: 700px;
     animation: fadeInUp 1.5s ease-in-out;
 }
+
 .hero p {
     max-width: 700px;
     margin: 1rem 0;
@@ -50,6 +56,7 @@ nav ul li a:hover {
     opacity: 0.9;
     animation: fadeInUp 2s ease-in-out;
 }
+
 .btn {
     background: #00ffcc;
     padding: 0.8rem 1.5rem;
@@ -59,6 +66,7 @@ nav ul li a:hover {
     cursor: pointer;
     animation: fadeInUp 2.5s ease-in-out;
 }
+
 .btn:hover {
     background: #00d4aa;
 }
@@ -76,7 +84,6 @@ nav ul li a:hover {
         font-size: 2rem;
     }
 }
-
 
 .carousel {
   position: relative;
@@ -112,6 +119,7 @@ nav ul li a:hover {
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+
 .carousel-btn:hover {
   background: #fff;
 }
@@ -126,11 +134,13 @@ nav ul li a:hover {
   overflow: hidden;
   border-radius: 12px;
 }
+
 .comparison-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .after-wrapper {
   position: absolute;
   top: 0;
@@ -139,6 +149,7 @@ nav ul li a:hover {
   height: 100%;
   overflow: hidden;
 }
+
 .handle {
   position: absolute;
   top: 0;
@@ -149,6 +160,7 @@ nav ul li a:hover {
   cursor: ew-resize;
   transform: translateX(-50%);
 }
+
 .handle::before {
   content: "";
   position: absolute;
@@ -160,4 +172,62 @@ nav ul li a:hover {
   border: 2px solid #333;
   border-radius: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Trivia Section */
+#trivia-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+}
+
+/* Trivia Card */
+.trivia-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 25px 30px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trivia-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.trivia-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #0077b6; /* ocean blue */
+  font-weight: 600;
+}
+
+.trivia-card p {
+  font-size: 1.05rem;
+  color: #333;
+  margin-bottom: 20px;
+  min-height: 60px;
+  line-height: 1.5;
+  transition: opacity 0.5s ease-in-out; /* smooth fade */
+}
+
+/* Trivia Button */
+.btn-trivia {
+  background: #00b4d8; /* beach cyan */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-trivia:hover {
+  background: #0077b6;
+  transform: scale(1.05);
 }
