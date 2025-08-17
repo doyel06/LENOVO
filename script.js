@@ -1,22 +1,37 @@
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+let currentIndex = 0;
 
-function animateValue(id, start, end, duration) {
-    let obj = document.getElementById(id);
-    let range = end - start;
-    let startTime = null;
-
-    function step(currentTime) {
-        if (!startTime) startTime = currentTime;
-        let progress = Math.min((currentTime - startTime) / duration, 1);
-        obj.textContent = Math.floor(progress * range + start);
-        if (progress < 1) {
-            requestAnimationFrame(step);
-        }
-    }
-    requestAnimationFrame(step);
+function updateCarousel() {
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
-window.addEventListener('load', () => {
-    animateValue("stat1", 0, 35, 2000);
-    animateValue("stat2", 0, 120, 2500);
-    animateValue("stat3", 0, 15, 3000);
+document.querySelector('.next').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateCarousel();
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  updateCarousel();
+});
+
+document.querySelectorAll('.comparison-container').forEach(container => {
+  const afterWrapper = container.querySelector('.after-wrapper');
+  const handle = container.querySelector('.handle');
+  let isDragging = false;
+
+  handle.addEventListener('mousedown', () => isDragging = true);
+  window.addEventListener('mouseup', () => isDragging = false);
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const rect = container.getBoundingClientRect();
+    let offsetX = e.clientX - rect.left;
+    if (offsetX < 0) offsetX = 0;
+    if (offsetX > rect.width) offsetX = rect.width;
+    const percent = (offsetX / rect.width) * 100;
+    afterWrapper.style.width = percent + "%";
+    handle.style.left = percent + "%";
+  });
 });
