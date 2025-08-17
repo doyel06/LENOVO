@@ -15,27 +15,34 @@ a {
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem;
-    background: rgba(10, 25, 47, 0.9);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  background: #06142d;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 nav h1 {
-    color: #00ffcc;
-    font-size: 1.5rem;
+  color: #00ffcc;
+  font-size: 1.5rem;
 }
+
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
-nav ul li a:hover {
-    color: #00ffcc;
-    transition: 0.3s;
+
+nav ul li a {
+  text-decoration: none;
+  color: #e6f1ff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #00ffcc;
 }
 
 section {
