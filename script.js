@@ -1,4 +1,4 @@
-// Animated Stats Counter
+
 function animateValue(id, start, end, duration) {
     let obj = document.getElementById(id);
     let range = end - start;
