@@ -78,20 +78,21 @@ nav ul li a:hover {
 }
 
 .fact-card {
-  background: white;
-  padding: 30px;
-  max-width: 600px;
+  background: #ffffff; /* white card */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 30px auto;
   text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: opacity 0.4s ease-in-out;
 }
 
-.fact-card p {
+.fact-card p#fact-text {
+  color: #222; /* dark text so it shows */
   font-size: 1.2rem;
-  margin-bottom: 20px;
-  line-height: 1.6;
+  margin-bottom: 15px;
 }
+
 
 #new-fact {
   padding: 10px 20px;
