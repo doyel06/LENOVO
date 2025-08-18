@@ -14,12 +14,14 @@ a {
     color: inherit;
 }
 
+/* Navbar */
 nav {
   background: #06142d;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); 
 }
 
 nav h1 {
@@ -34,12 +36,29 @@ nav ul {
 }
 
 nav ul li a {
+  position: relative;
   text-decoration: none;
   color: #e6f1ff;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
+/* Hover underline effect */
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #00ffcc;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
 nav ul li a:hover,
 nav ul li a.active {
   color: #00ffcc;
