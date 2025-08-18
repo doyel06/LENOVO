@@ -208,31 +208,31 @@ nav ul li a.active {
 
 /* Trivia Card */
 .trivia-card {
-  background: #ffffff;
+  background: #112240;
   border-radius: 12px;
   padding: 25px 30px;
   max-width: 500px;
   width: 90%;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 10px rgba(60, 106, 192, 0.779);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .trivia-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(15, 254, 206, 0.779);
+  box-shadow: 0 0 10px rgba(15, 254, 206, 0.779);
 }
 
 .trivia-card h3 {
   font-size: 1.6rem;
   margin-bottom: 15px;
-  color: #0077b6; /* ocean blue */
+  color: #00ffcc; /* ocean blue */
   font-weight: 600;
 }
 
 .trivia-card p {
   font-size: 1.05rem;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 20px;
   min-height: 60px;
   line-height: 1.5;

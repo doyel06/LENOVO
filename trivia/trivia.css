@@ -138,7 +138,7 @@ nav ul li a.active {
     background: #112240;
     border-radius: 10px;
     padding: 2rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    box-shadow: 0 0 10px rgba(60, 106, 192, 0.779);
     text-align: center;
     transition: transform 0.3s ease;
 }
@@ -156,6 +156,7 @@ nav ul li a.active {
 }
 .fact-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(15, 254, 206, 0.779);
 }
 #shuffle-facts {
     margin-top: 2rem;
@@ -183,7 +184,7 @@ nav ul li a.active {
 .cta-btn {
     display: inline-block;
     padding: 0.8rem 2rem;
-    background: #06142d;
+    background: #112240;
     color: #00ffcc;
     font-size: 1.1rem;
     font-weight: bold;

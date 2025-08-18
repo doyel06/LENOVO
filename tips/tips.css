@@ -120,10 +120,12 @@ nav ul li a.active {
   padding: 1.5rem;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(60, 106, 192, 0.779);
 }
 
 .tip-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(15, 254, 206, 0.779);
 }
 
 .tip-card h3 {
