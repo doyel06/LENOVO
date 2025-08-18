@@ -102,17 +102,17 @@ nav ul li a.active {
     align-items: center;
     padding: 2rem;
 }
-
 .filter {
     margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
-
 .filter label {
     font-size: 1.2rem;
-    margin-right: 1rem;
+    font-weight: bold;
     color: #00ffcc;
 }
-
 .filter select {
     padding: 0.8rem 1.2rem;
     font-size: 1rem;
@@ -121,38 +121,44 @@ nav ul li a.active {
     background: #06142d;
     color: #fff;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
+.filter select:hover {
+    background: #123456;
+ }
 
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+}
 .fact-card {
-    background: #ffffff;
+    background: #112240;
     border-radius: 10px;
     padding: 2rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    max-width: 600px;
-    width: 100%;
     text-align: center;
+    transition: transform 0.3s ease;
 }
-
-.fact-card p#fact-text {
-    color: #06142d;
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-#new-fact {
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 8px;
-    background: #06142d;
+.fact-card h3 {
+    font-size: 1.5rem;
     color: #00ffcc;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    margin-bottom: 1rem;
 }
-
-#new-fact:hover {
-    background: #00ffcc;
-    color: #06142d;
+.fact-card p {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+.fact-card.hidden {
+    display: none;
+}
+.fact-card:hover {
+    transform: translateY(-5px);
+}
+#shuffle-facts {
+    margin-top: 2rem;
 }
 
 .cta {
@@ -163,11 +169,6 @@ nav ul li a.active {
     border-radius: 12px;
     color: #06142d;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-}
-.cta h1 {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
 }
 .cta h3 {
     font-size: 2rem;

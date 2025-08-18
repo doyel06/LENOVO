@@ -19,13 +19,13 @@
     </ul>
   </nav>
 
-    <section class="hero">
+  <section class="hero">
     <h2>🌊 Did You Know?</h2>
     <p>Explore fascinating facts about Goa’s coastline, pollution, and conservation efforts.</p>
     <a href="#trivia-container" class="btn">Discover Facts</a>
   </section>
 
-  <section class="trivia-container">
+  <section class="trivia-container" id="trivia-container">
     <div class="filter">
       <label for="fact-category">Choose a category:</label>
       <select id="fact-category">
@@ -36,10 +36,22 @@
       </select>
     </div>
 
-    <div class="fact-card">
-      <p id="fact-text">Loading fact...</p>
-      <button id="new-fact">Show Another Fact</button>
+    <div class="facts-grid">
+      <div class="fact-card" data-category="erosion">
+        <h3>Erosion Fact</h3>
+        <p id="erosion-fact">Loading fact...</p>
+      </div>
+      <div class="fact-card" data-category="pollution">
+        <h3>Pollution Fact</h3>
+        <p id="pollution-fact">Loading fact...</p>
+      </div>
+      <div class="fact-card" data-category="conservation">
+        <h3>Conservation Fact</h3>
+        <p id="conservation-fact">Loading fact...</p>
+      </div>
     </div>
+
+    <button id="shuffle-facts" class="btn">Shuffle Facts</button>
   </section>
 
   <section class="cta">

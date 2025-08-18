@@ -16,38 +16,39 @@ const facts = {
   ]
 };
 
-const factText = document.getElementById("fact-text");
-const newFactBtn = document.getElementById("new-fact");
+const erosionFact = document.getElementById("erosion-fact");
+const pollutionFact = document.getElementById("pollution-fact");
+const conservationFact = document.getElementById("conservation-fact");
+const shuffleFactsBtn = document.getElementById("shuffle-facts");
 const categorySelect = document.getElementById("fact-category");
+const factCards = document.querySelectorAll(".fact-card");
 
 function getRandomFact(category) {
-  let pool = [];
-
-  if (category === "all") {
-    pool = [...facts.erosion, ...facts.pollution, ...facts.conservation];
-  } else {
-    pool = facts[category];
-  }
-
+  const pool = facts[category];
   const randomIndex = Math.floor(Math.random() * pool.length);
   return pool[randomIndex];
 }
 
-function showFact() {
-  const category = categorySelect.value;
-  const fact = getRandomFact(category);
-
-  // Fade effect
-  factText.style.opacity = 0;
-  setTimeout(() => {
-    factText.textContent = fact;
-    factText.style.opacity = 1;
-  }, 400);
+function showFacts(category) {
+  factCards.forEach(card => {
+    const cardCategory = card.getAttribute("data-category");
+    if (category === "all" || category === cardCategory) {
+      card.classList.remove("hidden");
+      const factText = card.querySelector("p");
+      factText.style.opacity = 0;
+      setTimeout(() => {
+        factText.textContent = getRandomFact(cardCategory);
+        factText.style.opacity = 1;
+      }, 400);
+    } else {
+      card.classList.add("hidden");
+    }
+  });
 }
 
 // Events
-newFactBtn.addEventListener("click", showFact);
-categorySelect.addEventListener("change", showFact);
+shuffleFactsBtn.addEventListener("click", () => showFacts(categorySelect.value));
+categorySelect.addEventListener("change", () => showFacts(categorySelect.value));
 
 // Initial load
-showFact();
+showFacts("all");
