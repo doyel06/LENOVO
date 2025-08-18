@@ -109,6 +109,47 @@ nav ul li a.active {
     }
 }
 
+.info-section {
+  width: 100%;
+  margin: 0;
+  padding: 40px 60px; /* adds distance from top/bottom + left/right edges */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.info-text {
+  width: 700px;
+}
+
+.info-image img {
+  width: 600px;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .info-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .info-text {
+    width: 100%;
+  }
+
+  .info-image img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+  }
+}
+
 .carousel {
   position: relative;
   width: 80%;

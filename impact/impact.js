@@ -2,28 +2,42 @@ const track = document.querySelector(".carousel-track");
 const slides = Array.from(track.children);
 const dots = document.querySelectorAll(".dot");
 let currentIndex = 0;
-const slideInterval = 4000; 
+const slideInterval = 4000;
+
+function updateSlides() {
+    slides.forEach((slide, index) => {
+        slide.classList.remove("active");
+        if (index === currentIndex) {
+            slide.classList.add("active");
+        }
+    });
+    dots.forEach((dot, index) => {
+        dot.classList.remove("active");
+        if (index === currentIndex) {
+            dot.classList.add("active");
+        }
+    });
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
 
 function moveToSlide(index) {
-  track.style.transform = `translateX(-${index * 100}%)`;
-  dots.forEach(dot => dot.classList.remove("active"));
-  dots[index].classList.add("active");
-  currentIndex = index;
+    currentIndex = index;
+    updateSlides();
 }
 
 function nextSlide() {
-  let newIndex = (currentIndex + 1) % slides.length;
-  moveToSlide(newIndex);
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSlides();
 }
 
 let autoSlide = setInterval(nextSlide, slideInterval);
 
 dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    moveToSlide(index);
-    clearInterval(autoSlide);
-    autoSlide = setInterval(nextSlide, slideInterval);
-  });
+    dot.addEventListener("click", () => {
+        moveToSlide(index);
+        clearInterval(autoSlide);
+        autoSlide = setInterval(nextSlide, slideInterval);
+    });
 });
 
 function animateValue(id, start, end, duration) {
@@ -43,6 +57,7 @@ function animateValue(id, start, end, duration) {
 }
 
 window.addEventListener('load', () => {
+    updateSlides();
     animateValue("stat1", 0, 35, 2000);
     animateValue("stat2", 0, 120, 2500);
     animateValue("stat3", 0, 15, 3000);
