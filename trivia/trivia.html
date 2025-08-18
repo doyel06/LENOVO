@@ -7,27 +7,25 @@
   <link rel="stylesheet" href="trivia.css">
 </head>
 <body>
-
-  <!-- Navbar -->
   <nav>
-  <h1>Shore Stories</h1>
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../about/about.html">About</a></li>
-    <li><a href="../impact/impact.html">Impact</a></li>
-    <li><a href="../contact/contact.html">Get Involved</a></li>
-    <li><a href="trivia.html" class="active">Trivia</a></li>
-    <li><a href="../tips/tips.html">Tips</a></li>
-  </ul>
-</nav>
+    <h1>Shore Stories</h1>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about/about.html">About</a></li>
+      <li><a href="../impact/impact.html">Impact</a></li>
+      <li><a href="../contact/contact.html">Get Involved</a></li>
+      <li><a href="trivia.html" class="active">Trivia</a></li>
+      <li><a href="../tips/tips.html">Tips</a></li>
+    </ul>
+  </nav>
 
-  <div class="intro">
-    <h1>🌊 Did You Know?</h1>
-    <p>Explore facts about Goa’s coastline, pollution, and conservation.</p>
-  </div>
+    <section class="hero">
+    <h2>🌊 Did You Know?</h2>
+    <p>Explore fascinating facts about Goa’s coastline, pollution, and conservation efforts.</p>
+    <a href="#trivia-container" class="btn">Discover Facts</a>
+  </section>
 
-  <main class="trivia-container">
-    <!-- Dropdown for themes -->
+  <section class="trivia-container">
     <div class="filter">
       <label for="fact-category">Choose a category:</label>
       <select id="fact-category">
@@ -38,16 +36,17 @@
       </select>
     </div>
 
-    <!-- Fact card -->
     <div class="fact-card">
       <p id="fact-text">Loading fact...</p>
       <button id="new-fact">Show Another Fact</button>
     </div>
-  </main>
+  </section>
 
-  <footer class="footer">
-    <a href="index.html">⬅ Back to Home</a>
-  </footer>
+  <section class="cta">
+    <h3>Join the Movement</h3>
+    <p>Together, we can protect Goa's shores for future generations. Get involved today!</p>
+    <a href="../contact/contact.html" class="cta-btn">Be a Volunteer</a>
+  </section>
 
   <script src="trivia.js"></script>
 </body>
