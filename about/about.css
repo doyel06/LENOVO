@@ -93,7 +93,7 @@ section {
 
 .cta {
     margin-top: 1rem;
-    padding: 2rem 1rem;
+    padding: 2rem 2rem;
     text-align: center;
     background: linear-gradient(135deg, #00ffcc, #0099cc);
     border-radius: 12px;
@@ -108,7 +108,7 @@ section {
 }
 
 .cta p {
-    font-size: 1.1rem;
+    font-size: 20px;
     margin-bottom: 2rem;
     opacity: 0.9;
 }

@@ -70,7 +70,9 @@ nav ul li a.active {
 
 .hero p {
   margin-bottom: 1.5rem;
+  font-size: 20px;
 }
+
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
@@ -140,7 +142,6 @@ nav ul li a.active {
     background: #00ffcc;
 }
 
-/* Impact Section */
 .stats {
   padding: 3rem 2rem;
   text-align: center;
