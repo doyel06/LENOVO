@@ -139,7 +139,6 @@ nav ul li a.active {
     padding: 2rem 1rem;
     text-align: center;
     background: linear-gradient(135deg, #00ffcc, #0099cc);
-    border-radius: 12px;
     color: #06142d;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
