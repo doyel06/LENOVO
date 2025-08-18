@@ -55,29 +55,21 @@ nav ul li a:hover,
 nav ul li a.active {
     color: #00ffcc;
 }
-section {
-    padding: 4rem 2rem;
-    max-width: 1100px;
-    margin: auto;
-}
+
 .hero {
-    margin-top: 1rem;
-    padding: 3rem 1rem;
-    text-align: center;
-    background: linear-gradient(135deg, #00ffcc, #0099cc);
-    border-radius: 12px;
-    color: #06142d;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(to right, #06142d, #123456);
 }
+
 .hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #00ffcc;
 }
+
 .hero p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
+  margin-bottom: 1.5rem;
 }
 .btn {
     display: inline-block;
@@ -94,6 +86,7 @@ section {
     background: #fff;
     color: #06142d;
 }
+
 .carousel {
     position: relative;
     width: 100%;
@@ -146,32 +139,41 @@ section {
 .dot.active {
     background: #00ffcc;
 }
+
+/* Impact Section */
 .stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin: 2rem auto;
-    text-align: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
+
 .stat {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease;
+  background: #112240;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(60, 106, 192, 0.779);
 }
+
 .stat:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(15, 254, 206, 0.779);
 }
+
 .stat h4 {
-    font-size: 2.5rem;
-    color: #00ffcc;
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #00ffcc;
 }
+
 .stat p {
-    font-size: 1.1rem;
-    color: #06142d;
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
 }
+
 .cta {
     margin-top: 1rem;
     padding: 2rem 1rem;
