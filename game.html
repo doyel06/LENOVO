@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goa 2050 | The Shifting Tide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass: rgba(0, 0, 0, 0.85);
+            --border: rgba(255, 255, 255, 0.15);
+            --accent: #00d2ff;
+            --font-main: 'Montserrat', sans-serif;
+            --font-title: 'Cinzel', serif;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            background: #000; color: #fff;
+            font-family: var(--font-main);
+            overflow: hidden;
+        }
+
+        /* --- STAGE CONFIGURATION --- */
+        #game-stage {
+            position: relative;
+            width: 100vw; height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 380px; /* Sidebar layout to keep center clear */
+        }
+
+        #visual-viewport {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            border-right: 1px solid var(--border);
+        }
+
+        .scene {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: opacity 2s ease-in-out;
+            opacity: 0;
+            z-index: 1;
+        }
+        .scene.active { opacity: 1; }
+
+        /* --- SIDEBAR INTERFACE --- */
+        #sidebar {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            z-index: 10;
+            justify-content: space-between;
+            border-left: 1px solid var(--border);
+        }
+
+        #year-display {
+            font-family: var(--font-title);
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .integrity-box { margin-bottom: 40px; }
+        .integrity-label { font-size: 9px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 10px; text-transform: uppercase;}
+        #health-bar-container { height: 2px; background: rgba(255,255,255,0.1); }
+        #health-bar-fill {
+            width: 100%; height: 100%;
+            background: var(--accent);
+            transition: width 1s ease, background 0.5s;
+        }
+
+        #narrative {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+
+        #choice-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .game-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 18px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+            font-family: var(--font-main);
+        }
+
+        .game-btn:hover {
+            border-color: var(--accent);
+            background: rgba(0, 210, 255, 0.05);
+            padding-left: 25px;
+        }
+
+        .feedback-text {
+            border-left: 2px solid var(--accent);
+            padding-left: 15px;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--accent);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        #vignette {
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, transparent 70%, rgba(0,0,0,0.4));
+            pointer-events: none; z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-stage">
+        <div id="visual-viewport">
+            <img id="good" class="scene active" src="assets/coast-good.png">
+            <img id="mid" class="scene" src="assets/coast-mid.png">
+            <img id="mid2" class="scene" src="assets/coast-mid2.png">
+            <img id="bad" class="scene" src="assets/coast-bad.png">
+            <img id="worse" class="scene" src="assets/coast-worse.png">
+            <img id="collapse" class="scene" src="assets/coast-collapse.png">
+            <div id="vignette"></div>
+        </div>
+
+        <div id="sidebar">
+            <div id="top-meta">
+                <div id="year-display">2025</div>
+                <div id="footer-label" style="font-size: 15px; opacity: 0.3; letter-spacing: 1px;">GOA COASTAL SIMULATION</div>
+                <div id="footer-label" style="font-size: 15px; opacity: 0.3; letter-spacing: 1px; margin-bottom: 15px;">2025-2050</div>
+                <div class="integrity-box">
+                    <div class="integrity-label">Coastal Stability</div>
+                    <div id="health-bar-container">
+                        <div id="health-bar-fill"></div>
+                    </div>
+                </div>
+                <div id="narrative">Birds circle a clean shore as children play in the surf. This is the baseline of our memory.</div>
+            </div>
+
+            <div id="choice-grid">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        const gameData = [
+            {
+                year: "2025",
+                text: "Tourism is rising. A proposal for a large resort on the dunes is on your desk.",
+                choices: [
+                    { text: "Approve Resort & Construction", impact: -20, feedback: "A construction crane appears on the horizon." },
+                    { text: "Enforce Shoreline Protection", impact: 5, feedback: "The clean shores remain intact." }
+                ]
+            },
+            {
+                year: "2030",
+                text: "The local economy is growing, but plastic waste is beginning to clutter the sand.",
+                choices: [
+                    { text: "Allow Unregulated Growth", impact: -20, feedback: "Sand erosion begins. Trash litters the tideline." },
+                    { text: "Mandate Waste Management", impact: 10, feedback: "The shore stays clean for another season." }
+                ]
+            },
+            {
+                year: "2035",
+                text: "Permanent restaurants are being built directly on the sand to cater to tourists.",
+                choices: [
+                    { text: "Expand Beachside Dining", impact: -20, feedback: "The first permanent restaurants open on the sand." },
+                    { text: "Protect Natural Buffer", impact: 10, feedback: "Small shacks remain, preserving the dunes." }
+                ]
+            },
+            {
+                year: "2040",
+                text: "Monsoon surges are getting closer. A worker is hired to manage the rising debris.",
+                choices: [
+                    { text: "Hire Cleanup Workers", impact: -15, feedback: "A lone worker picks up trash as erosion worsens." },
+                    { text: "Invest in Bio-Shields", impact: 15, feedback: "Mangroves are planted to fight the coming tide." }
+                ]
+            },
+            {
+                year: "2045",
+                text: "The weather has turned. Storms are constant and the soil is washing away.",
+                choices: [
+                    { text: "Build Concrete Defenses", impact: -30, feedback: "Soil erosion turns critical. Floods are imminent." },
+                    { text: "Strategic Relocation", impact: 0, feedback: "People move back, leaving the shore to nature." }
+                ]
+            }
+        ];
+
+        let turn = 0;
+        let health = 100;
+        const sceneIds = ["good", "mid", "mid2", "bad", "worse", "collapse"];
+
+        function updateHUD() {
+            const bar = document.getElementById('health-bar-fill');
+            bar.style.width = health + "%";
+            
+            if (health > 70) bar.style.background = "#00d2ff";
+            else if (health > 35) bar.style.background = "#f1c40f";
+            else bar.style.background = "#ff4b2b";
+
+            let activeId = "good";
+            if (health > 85) activeId = "good";
+            else if (health > 65) activeId = "mid";
+            else if (health > 45) activeId = "mid2";
+            else if (health > 25) activeId = "bad";
+            else if (health > 10) activeId = "worse";
+            else activeId = "collapse";
+
+            sceneIds.forEach(id => document.getElementById(id).classList.remove('active'));
+            document.getElementById(activeId).classList.add('active');
+        }
+
+        function renderTurn() {
+            if (turn >= gameData.length) {
+                showEnd();
+                return;
+            }
+
+            const data = gameData[turn];
+            document.getElementById('year-display').innerText = data.year;
+            document.getElementById('narrative').innerText = data.text;
+            
+            const grid = document.getElementById('choice-grid');
+            grid.innerHTML = "";
+
+            data.choices.forEach(c => {
+                const b = document.createElement('button');
+                b.className = "game-btn";
+                b.innerText = c.text;
+                b.onclick = () => {
+                    health = Math.max(0, Math.min(100, health + c.impact));
+                    updateHUD();
+                    grid.innerHTML = `<div class="feedback-text">${c.feedback}</div>`;
+                    setTimeout(() => { turn++; renderTurn(); }, 3000);
+                };
+                grid.appendChild(b);
+            });
+        }
+
+        function showEnd() {
+            document.getElementById('year-display').innerText = "2050";
+            let finalMsg = health > 50 
+                ? "The coast is scarred, but your intervention prevented total collapse." 
+                : "The shoreline has vanished. Only trash and flooded ruins remain.";
+            
+            document.getElementById('narrative').innerText = finalMsg;
+            document.getElementById('choice-grid').innerHTML = `
+                <button class="game-btn" onclick="location.reload()">RESTART SIMULATION</button>
+            `;
+        }
+
+        window.onload = () => {
+            updateHUD();
+            renderTurn();
+        };
+    </script>
+</body>
+</html>

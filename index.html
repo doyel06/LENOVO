@@ -18,6 +18,162 @@
       opacity: 80%;
       font-family: 'Arial', cursive;
     }
+
+    .simulator {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .simulator h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    #simText {
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .image-container.fade {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .image-container .image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+    }
+
+    .image-container .img1 {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .image-container .img2 {
+      z-index: 2;
+    }
+
+    .image-container .img3 {
+      z-index: 3;
+    }
+
+    .controls {
+      margin-top: 25px;
+    }
+
+    input[type="range"] {
+      width: 90%;
+      cursor: pointer;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 8px auto 0;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .year {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    .beach-selector {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .beach-selector button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      background-color: #e0e0e0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .beach-selector button.active {
+      background-color: #00796b;
+      color: white;
+    }
+
+/* Floating Action Button Styling */
+.floating-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 80px; /* Slightly larger to show the circular icon better */
+  height: 80px;
+  background-color: transparent; /* Remove background since your image is already a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+}
+
+.floating-btn img {
+  width: 100%; /* Your icon is circular, so it should fill the container */
+  height: auto;
+  border-radius: 50%; /* Ensures the shadow follows the circle */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.floating-btn:hover {
+  transform: scale(1.15) rotate(10deg);
+}
+
+/* Tooltip label */
+.floating-btn::before {
+  content: 'LAUNCH GAME';
+  position: absolute;
+  right: 95px;
+  background: #00d2ff;
+  color: #000;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.floating-btn:hover::before {
+  opacity: 1;
+}
+
   </style>
 </head>
 
@@ -31,6 +187,7 @@
       <li><a href="contact/contact.html">Get Involved</a></li>
       <li><a href="trivia/trivia.html">Trivia</a></li>
       <li><a href="tips/tips.html">Tips</a></li>
+      <li><a href="vog/vog.html">Voices</a></li>
     </ul>
   </nav>
 
@@ -56,63 +213,33 @@
     </div>
   </section>
 
-  <div class="carousel">
-    <div class="carousel-track">
+<section class="simulator">
+  <h2>Future Goa Simulator</h2>
+  <p id="simText">Goa's coastline as it looks today.</p>
 
-      <div class="carousel-slide" style="position: relative;">
-        <h2
-          style="position:absolute; top:10px; left:50%; transform:translateX(-50%); color:white; font-size:2rem; z-index:10; text-shadow:2px 2px 5px black;">
-          Colva Beach
-        </h2>
-        <div class="comparison-container">
-          <img src="assets/colva-before.jpg" alt="Colva beach Before" class="comparison-img">
-          <div class="after-wrapper">
-            <img src="assets/colva-after.jpg" alt="Colva beach After" class="comparison-img">
-          </div>
-          <div class="handle"></div>
-        </div>
-      </div>
+  <!-- Beach Selector -->
+  <div class="beach-selector">
+    <button data-beach="vagator" class="active">Vagator</button>
+    <button data-beach="colva">Colva</button>
+    <button data-beach="miramar">Miramar</button>
+  </div>
 
-      <div class="carousel-slide" style="position: relative;">
-        <h2
-          style="position:absolute; top:10px; left:50%; transform:translateX(-50%); color:white; font-size:2rem; z-index:10; text-shadow:2px 2px 5px black;">
-          Miramar Beach
-        </h2>
-        <div class="comparison-container">
-          <img src="assets/miramar-before.jpg" alt="Miramar beach Before" class="comparison-img">
-          <div class="after-wrapper">
-            <img src="assets/miramar-after.jpg" alt="Miramar beach After" class="comparison-img">
-          </div>
-          <div class="handle"></div>
-        </div>
-      </div>
+  <!-- Image Container -->
+  <div class="image-container fade">
+    <img class="image img1" />
+    <img class="image img2" />
+    <img class="image img3" />
+  </div>
 
-      <div class="carousel-slide" style="position: relative;">
-        <h2
-          style="position:absolute; top:10px; left:50%; transform:translateX(-50%); color:white; font-size:2rem; z-index:10; text-shadow:2px 2px 5px black;">
-          Vagator Beach
-        </h2>
-        <div class="comparison-container">
-          <img src="assets/vagator-before.jpg" alt="Vagator beach Before" class="comparison-img">
-          <div class="after-wrapper">
-            <img src="assets/vagator-after.jpg" alt="Vagator beach After" class="comparison-img">
-          </div>
-          <div class="handle"></div>
-        </div>
-      </div>
-
+  <!-- Controls -->
+  <div class="controls">
+    <input type="range" min="0" max="100" value="0" id="slider" />
+    <div class="labels">
+      <span>Present</span>
+      <span class="year" id="yearText">Year: 2025</span>
+      <span>Future</span>
     </div>
-
-    <button class="carousel-btn prev">❮</button>
-    <button class="carousel-btn next">❯</button>
-  </div>
-
-  <div style="display:flex; justify-content:center; align-items:center; margin:0;">
-    <h3 style="font-size:2rem; font-weight:bold;">
-      <span style="margin-right:500px;">NOW</span>
-      <span>THEN</span>
-    </h3>
-  </div>
+</section>
 
   <!-- Trivia Card Section -->
   <section id="trivia-section" style="display:flex; justify-content:center; margin:40px 0;">
@@ -123,7 +250,96 @@
     </div>
   </section>
 
+  <a href="game.html" class="floating-btn">
+  <img src="assets/controller.png" alt="Play Game">
+</a>
+
   <script src="index.js"></script>
+<script>
+  const beaches = {
+    vagator: {
+      images: [
+        "assets/vagator-2025.jpg",
+        "assets/vagator-2030.png",
+        "assets/vagator-2035.png"
+      ],
+      name: "Vagator Beach"
+    },
+    colva: {
+      images: [
+        "assets/colva-2025.jpg",
+        "assets/colva-2030.png",
+        "assets/colva-2035.png"
+      ],
+      name: "Colva Beach"
+    },
+    miramar: {
+      images: [
+        "assets/miramar-2025.jpg",
+        "assets/miramar-2030.png",
+        "assets/miramar-2035.png"
+      ],
+      name: "Miramar Beach"
+    }
+  };
+
+  const slider = document.getElementById("slider");
+  const img1 = document.querySelector(".img1");
+  const img2 = document.querySelector(".img2");
+  const img3 = document.querySelector(".img3");
+  const simText = document.getElementById("simText");
+  const yearText = document.getElementById("yearText");
+
+  let currentBeach = "vagator";
+
+  function loadBeach(beachKey) {
+    currentBeach = beachKey;
+    const imgs = beaches[beachKey].images;
+
+    img1.src = imgs[0];
+    img2.src = imgs[1];
+    img3.src = imgs[2];
+
+    slider.value = 0;
+    img1.style.opacity = 1;
+    img2.style.opacity = 0;
+    img3.style.opacity = 0;
+
+    simText.innerText = `${beaches[beachKey].name} as it looks today.`;
+    yearText.innerText = "Year: 2025";
+  }
+
+  document.querySelectorAll(".beach-selector button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".beach-selector button")
+        .forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      loadBeach(btn.dataset.beach);
+    });
+  });
+
+  slider.addEventListener("input", () => {
+    const v = Number(slider.value);
+
+    img1.style.opacity = Math.max(0, 1 - v / 40);
+    img2.style.opacity =
+      v >= 20 && v <= 80 ? 1 - Math.abs(50 - v) / 30 : 0;
+    img3.style.opacity = Math.min(1, (v - 60) / 40);
+
+    if (v < 30) {
+      yearText.innerText = "Year: 2025";
+    } else if (v < 70) {
+      yearText.innerText = "Year: 2030";
+    } else {
+      yearText.innerText = "Year: 2035 ⚠️";
+    }
+  });
+
+  loadBeach("vagator");
+</script>
+
+
 </body>
 
 </html>

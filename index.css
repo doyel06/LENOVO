@@ -112,7 +112,7 @@ nav ul li a.active {
 .info-section {
   width: 100%;
   margin: 0;
-  padding: 40px 60px; /* adds distance from top/bottom + left/right edges */
+  padding: 40px 60px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

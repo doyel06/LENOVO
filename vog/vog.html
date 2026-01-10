@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voices of Goa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #fff;
+      background-color: #0a192f;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    nav {
+      background: #06142d;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    nav h1 {
+      color: #00ffcc;
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      position: relative;
+      font-weight: bold;
+      color: #e6f1ff;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #00ffcc;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00ffcc;
+    }
+
+    /* ===== VOICES SECTION ===== */
+    .voices {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .voices h2 {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .voices .subtitle {
+      color: #cfd8dc;
+      margin-bottom: 30px;
+    }
+
+    .map-container {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    .goa-map {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    /* MARKERS */
+    .marker {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ff0606;
+      border: 2px solid white;
+      cursor: pointer;
+    }
+
+    .marker:hover {
+      background-color: #ad0000;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    .marker::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: rgba(255, 6, 6, 0.664);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.6);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    /* TOOLTIP */
+    .marker .tooltip {
+      position: absolute;
+      bottom: 140%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: #333;
+      padding: 12px 14px;
+      border-radius: 8px;
+      width: 240px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+      z-index: 10;
+      text-align: left;
+    }
+
+    .marker:hover .tooltip {
+      opacity: 1;
+    }
+
+    .tooltip h4 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      color: #00796b;
+    }
+
+    .tooltip p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* DOTS */
+    .dots {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+
+    .dots span.active {
+      background: #00796b;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h1>Shore Stories</h1>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about/about.html">About</a></li>
+    <li><a href="../impact/impact.html">Impact</a></li>
+    <li><a href="../contact/contact.html">Get Involved</a></li>
+    <li><a href="../trivia/trivia.html">Trivia</a></li>
+    <li><a href="../tips/tips.html">Tips</a></li>
+    <li><a class="active">Voices</a></li>
+  </ul>
+</nav>
+
+<section class="voices">
+  <h2>Voices of Goa</h2>
+  <p class="subtitle">Stories from people whose lives are shaped by the sea</p>
+  <p style="color:#9be7d8;">Hover over a location to hear the voices of the coast</p>
+
+  <div class="map-container">
+    <img src="../assets/goa-map.png" class="goa-map" alt="Map of Goa">
+
+    <button class="marker" style="top:53.5%; left:43%;" data-beach="betalbatim">
+      <div class="tooltip">
+        <h4 class="story-title"></h4>
+        <p class="story-text"></p>
+        <div class="dots"></div>
+      </div>
+    </button>
+
+    <button class="marker" style="top:55.5%; left:43.8%;" data-beach="colva">
+      <div class="tooltip">
+        <h4 class="story-title"></h4>
+        <p class="story-text"></p>
+        <div class="dots"></div>
+      </div>
+    </button>
+
+    <button class="marker" style="top:36.9%; left:31.7%;" data-beach="miramar">
+      <div class="tooltip">
+        <h4 class="story-title"></h4>
+        <p class="story-text"></p>
+        <div class="dots"></div>
+      </div>
+    </button>
+
+    <button class="marker" style="top:69%; left:48.4%;" data-beach="cavelossim">
+      <div class="tooltip">
+        <h4 class="story-title"></h4>
+        <p class="story-text"></p>
+        <div class="dots"></div>
+      </div>
+    </button>
+  </div>
+</section>
+
+<script>
+  const beachStories = {
+    betalbatim: [
+    {
+        title: "Ramesh, Fisherman",
+        text: "I have fished these waters since I was a boy. The shoreline used to feel far away. Now, every year, it comes closer."
+    },
+    {
+        title: "Lata, Local Resident",
+        text: "During monsoons, seawater reaches places it never did before. Flooding feels normal now."
+    },
+    {
+        title: "Salvador, Boat Mechanic",
+        text: "Engines corrode faster because the water quality has changed. The sea leaves marks everywhere."
+    }
+    ],
+    
+    colva: [
+    {
+        title: "Anita, Beach Vendor",
+        text: "When the beach is clean, tourists stop and talk. When it is dirty, they walk past without looking."
+    },
+    {
+        title: "Joseph, Hotel Staff",
+        text: "Tourism depends on the shore. If beaches suffer, jobs disappear quietly."
+    },
+    {
+        title: "Rahul, Lifeguard",
+        text: "Stronger waves and erosion make rescues more dangerous than before."
+    }
+    ],
+
+    miramar: [
+    {
+        title: "Ryan, Student Volunteer",
+        text: "During cleanups, I realized how easy it is to ignore damage when it happens slowly."
+    },
+    {
+        title: "Meena, Morning Walker",
+        text: "I come here every day. The beach looks different than it did even five years ago."
+    },
+    {
+        title: "Aakash, Cleanup Volunteer",
+        text: "Most waste comes from habits, not accidents. Small choices add up."
+    }
+    ],
+
+    cavelossim: [
+    {
+        title: "Ryan, Student Volunteer",
+        text: "During cleanups, I realized how easy it is to ignore damage when it happens slowly."
+    },
+    {
+        title: "Meena, Morning Walker",
+        text: "I come here every day. The beach looks different than it did even five years ago."
+    },
+    {
+        title: "Aakash, Cleanup Volunteer",
+        text: "Most waste comes from habits, not accidents. Small choices add up."
+    }
+    ]
+
+  };
+
+  document.querySelectorAll(".marker").forEach(marker => {
+    const stories = beachStories[marker.dataset.beach];
+    const title = marker.querySelector(".story-title");
+    const text = marker.querySelector(".story-text");
+    const dots = marker.querySelector(".dots");
+
+    let i = 0, interval;
+
+    dots.innerHTML = stories.map((_, idx) =>
+      `<span class="${idx === 0 ? 'active' : ''}"></span>`
+    ).join("");
+
+    function show(n) {
+      title.textContent = stories[n].title;
+      text.textContent = stories[n].text;
+      dots.querySelectorAll("span").forEach((d, x) =>
+        d.classList.toggle("active", x === n)
+      );
+    }
+
+    marker.addEventListener("mouseenter", () => {
+      i = 0;
+      show(i);
+      interval = setInterval(() => {
+        i = (i + 1) % stories.length;
+        show(i);
+      }, 6000);
+    });
+
+    marker.addEventListener("mouseleave", () => {
+      clearInterval(interval);
+    });
+  });
+</script>
+
+</body>
+</html>
