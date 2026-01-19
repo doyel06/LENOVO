@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-  <title>Saving Goa's Coastline</title>
+  <title>Shore Stories</title>
   <link rel="stylesheet" href="index.css">
   <style>
     .hero {
@@ -124,14 +124,13 @@
       color: white;
     }
 
-/* Floating Action Button Styling */
 .floating-btn {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 80px; /* Slightly larger to show the circular icon better */
+  width: 80px;
   height: 80px;
-  background-color: transparent; /* Remove background since your image is already a circle */
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,9 +140,9 @@
 }
 
 .floating-btn img {
-  width: 100%; /* Your icon is circular, so it should fill the container */
+  width: 100%; 
   height: auto;
-  border-radius: 50%; /* Ensures the shadow follows the circle */
+  border-radius: 50%; 
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
@@ -151,7 +150,6 @@
   transform: scale(1.15) rotate(10deg);
 }
 
-/* Tooltip label */
 .floating-btn::before {
   content: 'LAUNCH GAME';
   position: absolute;
@@ -217,21 +215,18 @@
   <h2>Future Goa Simulator</h2>
   <p id="simText">Goa's coastline as it looks today.</p>
 
-  <!-- Beach Selector -->
   <div class="beach-selector">
     <button data-beach="vagator" class="active">Vagator</button>
     <button data-beach="colva">Colva</button>
     <button data-beach="miramar">Miramar</button>
   </div>
 
-  <!-- Image Container -->
   <div class="image-container fade">
     <img class="image img1" />
     <img class="image img2" />
     <img class="image img3" />
   </div>
 
-  <!-- Controls -->
   <div class="controls">
     <input type="range" min="0" max="100" value="0" id="slider" />
     <div class="labels">
@@ -241,7 +236,6 @@
     </div>
 </section>
 
-  <!-- Trivia Card Section -->
   <section id="trivia-section" style="display:flex; justify-content:center; margin:40px 0;">
     <div class="trivia-card">
       <h3>🌊 Did You Know?</h3>
