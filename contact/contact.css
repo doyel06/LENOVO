@@ -24,7 +24,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   width: 100%;
@@ -55,7 +55,7 @@ nav ul li a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px; 
+  bottom: -5px;
   width: 0%;
   height: 2px;
   background: #00ffcc;
@@ -70,6 +70,61 @@ nav ul li a.active::after {
 nav ul li a:hover,
 nav ul li a.active {
   color: #00ffcc;
+}
+
+.events {
+  margin: 3rem 0;
+}
+
+.event-cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.event-card {
+  background: #112240;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.event-card h4 {
+  color: #00ffcc;
+}
+
+.event-card button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #00ffcc;
+  color: #0a192f;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.event-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 25, 47, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.event-popup-content {
+  background: #112240;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
 }
 
 .contact {
@@ -95,7 +150,7 @@ nav ul li a.active {
 
 .contact-info {
   flex: 1;
-  text-align: left;
+  text-align: center;
   min-width: 250px;
 }
 
@@ -126,12 +181,39 @@ form {
   min-width: 250px;
 }
 
-input, textarea {
-  padding: 0.8rem;
-  border: none;
-  border-radius: 5px;
-  outline: none;
+input,
+select,
+textarea {
+  background: #0a192f;
+  color: #e6f1ff;
+  border: 1px solid #233554;
+  border-radius: 6px;
+  padding: 0.75rem;
   font-size: 1rem;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8892b0;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #00ffcc;
+}
+
+.close-btn {
+  background: transparent;
+  color: #8892b0;
+  border: 1px solid #233554;
+  margin-top: 0.5rem;
+}
+
+.close-btn:hover {
+  background: #233554;
+  color: #fff;
 }
 
 button {

@@ -20,3 +20,15 @@ faqQuestions.forEach(button => {
     }
   });
 });
+
+function openEventPopup(eventName) {
+  const popup = document.getElementById("eventPopup");
+  const eventSelect = document.getElementById("popupEventSelect");
+
+  popup.style.display = "flex";
+  eventSelect.value = eventName;
+}
+
+function closeEventPopup() {
+  document.getElementById("eventPopup").style.display = "none";
+}

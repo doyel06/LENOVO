@@ -1,116 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact - Shore Stories</title>
-<link rel="stylesheet" href="contact.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Shore Stories</title>
+  <link rel="stylesheet" href="contact.css">
 </head>
+
 <body>
 
 
-<nav>
- <h1>Shore Stories</h1>
- <ul>
-  <li><a href="../index.html">Home</a></li>
-  <li><a href="../about/about.html">About</a></li>
-  <li><a href="../impact/impact.html">Impact</a></li>
-  <li><a href="contact.html" class="active">Get Involved</a></li>
-  <li><a href="../trivia/trivia.html">Trivia</a></li>
-  <li><a href="../tips/tips.html">Tips</a></li>
-  <li><a href="../vog/vog.html">Voices</a></li>
- </ul>
-</nav>
+  <nav>
+    <h1>Shore Stories</h1>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about/about.html">About</a></li>
+      <li><a href="../impact/impact.html">Impact</a></li>
+      <li><a href="contact.html" class="active">Get Involved</a></li>
+      <li><a href="../trivia/trivia.html">Trivia</a></li>
+      <li><a href="../tips/tips.html">Tips</a></li>
+      <li><a href="../vog/vog.html">Voices</a></li>
+    </ul>
+  </nav>
 
-<section class="contact">
- <h3>Get Involved</h3>
- 
- <div class="contact-container">
-  <div class="contact-info">
-   <p><strong>Email:</strong> support@shorestories.com</p>
-   <p><strong>Phone:</strong> +91 1234567896</p>
-   <p><strong>Location:</strong> Goa, India</p>
-</div>
+  <section class="contact">
+    <h3>Get Involved</h3>
 
+    <div class="contact-container">
+      <div class="contact-info">
+        <p><strong>Email:</strong> support@shorestories.com</p>
+        <p><strong>Phone:</strong> +91 1234567896</p>
+        <p><strong>Location:</strong> Goa, India</p>
+      </div>
 
-<form onsubmit="showPopup(event)">
- <input type="text" placeholder="Your Name" required>
- <input type="email" placeholder="Your Email" required>
- <button type="submit">Submit</button>
-</form>
+      <section class="events">
+        <h3>Upcoming Clean-Up Drives</h3>
 
-<section class="faq">
-  <h2>Quick FAQ</h2>
+        <div class="event-cards">
 
-  <div class="faq-item">
-    <button class="faq-question">How can I join a clean-up?</button>
-    <div class="faq-answer">
-      <p>You can sign up through our volunteer form or contact us via email. We'll notify you about the next drive!</p>
+          <div class="event-card">
+            <h4>Baga Beach Clean-Up</h4>
+            <p><strong>Date:</strong> 10 Oct 2024</p>
+            <p><strong>Time:</strong> 7:00 AM – 10:00 AM</p>
+            <p><strong>Type:</strong> Beach Clean-Up</p>
+            <button onclick="openEventPopup('Baga Beach Clean-Up')">Register</button>
+
+          </div>
+
+          <div class="event-card">
+            <h4>Colva Awareness Drive</h4>
+            <p><strong>Date:</strong> 18 Oct 2024</p>
+            <p><strong>Time:</strong> 9:00 AM – 12:00 PM</p>
+            <p><strong>Type:</strong> Awareness Campaign</p>
+            <button onclick="openEventPopup('Colva Awareness Drive')">Register</button>
+          </div>
+
+          <div class="event-card">
+            <h4>Miramar Plastic Collection Drive</h4>
+            <p><strong>Date:</strong> 25 Oct 2024</p>
+            <p><strong>Time:</strong> 6:30 AM – 9:30 AM</p>
+            <p><strong>Type:</strong> Plastic Waste Collection</p>
+            <button onclick="openEventPopup('Miramar Plastic Collection Drive')">Register</button>
+          </div>
+
+          <div class="event-card">
+            <h4>Candolim Dune Restoration Drive</h4>
+            <p><strong>Date:</strong> 2 Nov 2024</p>
+            <p><strong>Time:</strong> 6:30 AM – 9:30 AM</p>
+            <p><strong>Type:</strong> Dune Restoration & Plantation</p>
+            <button onclick="openEventPopup('Candolim Dune Restoration Drive')">Register</button>
+          </div>
+
+          <div class="event-card">
+            <h4>Anjuna Plastic Audit Walk</h4>
+            <p><strong>Date:</strong> 9 Nov 2024</p>
+            <p><strong>Time:</strong> 7:00 AM – 10:00 AM</p>
+            <p><strong>Type:</strong> Plastic Waste Survey & Clean-Up</p>
+            <button onclick="openEventPopup('Anjuna Plastic Audit Walk')">Register</button>
+          </div>
+
+          <div class="event-card">
+            <h4>Morjim Turtle Nest Awareness Drive</h4>
+            <p><strong>Date:</strong> 16 Nov 2024</p>
+            <p><strong>Time:</strong> 5:30 AM – 8:30 AM</p>
+            <p><strong>Type:</strong> Wildlife Awareness Program</p>
+            <button onclick="openEventPopup('Morjim Turtle Nest Awareness Drive')">Register</button>
+          </div>
+
+          <div class="event-card">
+            <h4>Vagator Cliff Clean-Up</h4>
+            <p><strong>Date:</strong> 23 Nov 2024</p>
+            <p><strong>Time:</strong> 6:00 AM – 9:00 AM</p>
+            <p><strong>Type:</strong> Coastal Clean-Up</p>
+            <button onclick="openEventPopup('Vagator Cliff Clean-Up')">Register</button>
+          </div>
+
+          <div class="event-card">
+            <h4>Palolem Eco-Tourism Awareness Camp</h4>
+            <p><strong>Date:</strong> 30 Nov 2024</p>
+            <p><strong>Time:</strong> 9:00 AM – 12:00 PM</p>
+            <p><strong>Type:</strong> Sustainable Tourism Awareness</p>
+            <button onclick="openEventPopup('Palolem Eco-Tourism Awareness Camp')">Register</button>
+          </div>
+
+          <div class="event-card">
+            <h4>Dona Paula Marine Debris Collection</h4>
+            <p><strong>Date:</strong> 7 Dec 2024</p>
+            <p><strong>Time:</strong> 7:00 AM – 10:00 AM</p>
+            <p><strong>Type:</strong> Marine Debris Collection</p>
+            <button onclick="openEventPopup('Dona Paula Marine Debris Collection')">Register</button>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="faq">
+        <h2>Quick FAQ</h2>
+
+        <div class="faq-item">
+          <button class="faq-question">How can I join a clean-up?</button>
+          <div class="faq-answer">
+            <p>You can sign up through our volunteer form or contact us via email. We'll notify you about the next
+              drive!</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What items can I donate?</button>
+          <div class="faq-answer">
+            <p>Eco-friendly gloves, garbage bags, reusable water bottles, and funds to support clean-up equipment are
+              always welcome.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Are certificates provided for volunteers?</button>
+          <div class="faq-answer">
+            <p>Yes! Every volunteer who participates in our clean-up drives receives an appreciation certificate.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I organize a private group clean-up?</button>
+          <div class="faq-answer">
+            <p>Absolutely! Contact us to schedule a group clean-up at your preferred beach location.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Is there an age limit for volunteers?</button>
+          <div class="faq-answer">
+            <p>We welcome volunteers of all ages. Children below 12 must be accompanied by a guardian.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Do you provide tools and equipment?</button>
+          <div class="faq-answer">
+            <p>Yes, gloves, bags, and other necessary tools are provided for all registered volunteers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How often are clean-ups organized?</button>
+          <div class="faq-answer">
+            <p>We organize clean-up drives every month, and special drives on World Environment Day and other occasions.
+            </p>
+          </div>
+        </div>
+
+        <div id="eventPopup" class="event-popup">
+          <div class="event-popup-content">
+            <h3>Event Registration</h3>
+
+            <form id="popupForm" onsubmit="showPopup(event)">
+
+              <input type="text" placeholder="Full Name" required>
+              <input type="email" placeholder="Email Address" required>
+              <input type="tel" placeholder="Phone Number" required>
+
+              <select id="popupEventSelect" required>
+                <option value="">Select Event</option>
+                <option>Baga Beach Clean-Up</option>
+                <option>Colva Awareness Drive</option>
+                <option>Miramar Plastic Collection Drive</option>
+                <option>Candolim Dune Restoration Drive</option>
+                <option>Anjuna Plastic Audit Walk</option>
+                <option>Morjim Turtle Nest Awareness Drive</option>
+                <option>Vagator Cliff Clean-Up</option>
+                <option>Palolem Eco-Tourism Awareness Camp</option>
+                <option>Dona Paula Marine Debris Collection</option>
+
+              </select>
+
+              <select required>
+                <option value="">Age Group</option>
+                <option>Below 18</option>
+                <option>18–40</option>
+                <option>40+</option>
+              </select>
+
+              <button type="submit">Confirm Registration</button>
+              <button type="button" class="close-btn" onclick="closeEventPopup()">Cancel</button>
+
+            </form>
+          </div>
+        </div>
+
+        <div id="popup"
+          style="display:none;position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background: #0a192f;color: #fff;padding: 2rem;border-radius: 10px;text-align: center;box-shadow: 0 5px 15px rgba(0,0,0,0.5);z-index: 1000;">
+          <h3>✅ Thank you for reaching out!</h3>
+          <p>We'll get back to you soon.</p>
+          <button onclick="closePopup()"
+            style="margin-top: 1rem;padding: 0.5rem 1rem;border: none;background: #00ffcc;color: #0a192f;font-weight: bold;border-radius: 5px;cursor: pointer;">Close</button>
+        </div>
     </div>
-  </div>
+  </section>
 
-  <div class="faq-item">
-    <button class="faq-question">What items can I donate?</button>
-    <div class="faq-answer">
-      <p>Eco-friendly gloves, garbage bags, reusable water bottles, and funds to support clean-up equipment are always welcome.</p>
-    </div>
-  </div>
+  <script>
+    function showPopup(event) {
+      event.preventDefault();
+      document.getElementById("popup").style.display = "block";
+    }
 
-  <div class="faq-item">
-    <button class="faq-question">Are certificates provided for volunteers?</button>
-    <div class="faq-answer">
-      <p>Yes! Every volunteer who participates in our clean-up drives receives an appreciation certificate.</p>
-    </div>
-  </div>
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
 
-  <div class="faq-item">
-  <button class="faq-question">Can I organize a private group clean-up?</button>
-  <div class="faq-answer">
-    <p>Absolutely! Contact us to schedule a group clean-up at your preferred beach location.</p>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-question">Is there an age limit for volunteers?</button>
-  <div class="faq-answer">
-    <p>We welcome volunteers of all ages. Children below 12 must be accompanied by a guardian.</p>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-question">Do you provide tools and equipment?</button>
-  <div class="faq-answer">
-    <p>Yes, gloves, bags, and other necessary tools are provided for all registered volunteers.</p>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-question">How often are clean-ups organized?</button>
-  <div class="faq-answer">
-    <p>We organize clean-up drives every month, and special drives on World Environment Day and other occasions.</p>
-  </div>
-</div>
-
-<div id="popup" style="display:none;position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background: #0a192f;color: #fff;padding: 2rem;border-radius: 10px;text-align: center;box-shadow: 0 5px 15px rgba(0,0,0,0.5);z-index: 1000;">
- <h3>✅ Thank you for reaching out!</h3>
- <p>We'll get back to you soon.</p>
- <button onclick="closePopup()" style="margin-top: 1rem;padding: 0.5rem 1rem;border: none;background: #00ffcc;color: #0a192f;font-weight: bold;border-radius: 5px;cursor: pointer;">Close</button>
-</div>
- </div>
-</section>
-
-<script>
- function showPopup(event) {
-  event.preventDefault();
-  document.getElementById("popup").style.display = "block";
- }
-
-
- function closePopup() {
-  document.getElementById("popup").style.display = "none";
- }
-</script>
-
-<script src="contact.js"></script>
+  <script src="contact.js"></script>
 </body>
+
 </html>
