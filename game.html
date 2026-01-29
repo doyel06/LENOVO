@@ -21,12 +21,11 @@
             overflow: hidden;
         }
 
-        /* --- STAGE CONFIGURATION --- */
         #game-stage {
             position: relative;
             width: 100vw; height: 100vh;
             display: grid;
-            grid-template-columns: 1fr 380px; /* Sidebar layout to keep center clear */
+            grid-template-columns: 1fr 380px;
         }
 
         #visual-viewport {
@@ -46,7 +45,6 @@
         }
         .scene.active { opacity: 1; }
 
-        /* --- SIDEBAR INTERFACE --- */
         #sidebar {
             background: var(--glass);
             backdrop-filter: blur(20px);

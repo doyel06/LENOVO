@@ -124,54 +124,53 @@
       color: white;
     }
 
-.floating-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 80px;
-  height: 80px;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  text-decoration: none;
-}
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 80px;
+      height: 80px;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+    }
 
-.floating-btn img {
-  width: 100%; 
-  height: auto;
-  border-radius: 50%; 
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-}
+    .floating-btn img {
+      width: 100%; 
+      height: auto;
+      border-radius: 50%; 
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
 
-.floating-btn:hover {
-  transform: scale(1.15) rotate(10deg);
-}
+    .floating-btn:hover {
+      transform: scale(1.15) rotate(10deg);
+    }
 
-.floating-btn::before {
-  content: 'LAUNCH GAME';
-  position: absolute;
-  right: 95px;
-  background: #00d2ff;
-  color: #000;
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  font-family: 'Montserrat', sans-serif;
-}
+    .floating-btn::before {
+      content: 'LAUNCH GAME';
+      position: absolute;
+      right: 95px;
+      background: #00d2ff;
+      color: #000;
+      padding: 8px 15px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-.floating-btn:hover::before {
-  opacity: 1;
-}
-
+    .floating-btn:hover::before {
+      opacity: 1;
+    }
   </style>
 </head>
 
