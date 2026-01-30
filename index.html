@@ -209,6 +209,37 @@
       <img src="assets/2.jpeg" alt="Coastal Pollution">
     </div>
   </section>
+    <div class="report-btn-wrapper">
+    <button id="reportBtn" class="btn" style="width: 300px; font-size: medium;">
+      Report a Place
+    </button>
+  </div>
+<div id="reportModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>🧹 Report a Place</h2>
+    <p>Help us identify locations that need cleaning.</p>
+
+    <form id="reportForm">
+      <label>Place Name</label>
+      <input type="text" placeholder="Eg. Miramar Beach" required>
+
+      <label>Location / Landmark</label>
+      <input type="text" placeholder="Near parking area / shacks">
+
+      <label>Description</label>
+      <textarea rows="4" placeholder="Describe the pollution issue..." required></textarea>
+
+      <label>Upload Photos</label>
+      <input type="file" accept="image/*" multiple required>
+
+      <button type="submit" class="btn" style="margin-top:15px;">
+        Submit Report
+      </button>
+    </form>
+  </div>
+</div>
 
 <section class="simulator">
   <h2>Future Goa Simulator</h2>

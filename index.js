@@ -33,3 +33,23 @@ updateTrivia();
 
 // Change fact every 7 seconds
 setInterval(updateTrivia, 7000);
+
+  const modal = document.getElementById("reportModal");
+  const btn = document.getElementById("reportBtn");
+  const close = document.querySelector(".close");
+
+  btn.onclick = () => modal.style.display = "flex";
+  close.onclick = () => modal.style.display = "none";
+
+  window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  };
+
+  document.getElementById("reportForm").addEventListener("submit", e => {
+    e.preventDefault();
+    alert("Thank you! Your report has been submitted 🌍");
+    modal.style.display = "none";
+    e.target.reset();
+  });
+
+
